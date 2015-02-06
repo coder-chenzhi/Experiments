@@ -18,7 +18,11 @@ def get_current_time():
     return time_string
 
 def monitor(ip, cur_time):
-    cmd = 'sshpass -p "ubuntu" ssh ubuntu@' + ip + ' "sar -r -u -d 1 5 > ~/' + ip + '-'+ cur_time + 'log"'
+    filename = ip + '-'+ cur_time + '.log'
+    cmd = 'sshpass -p "ubuntu" ssh ubuntu@' + ip + ' sar -r -u -d 1 5 > ~/' + filename
+    print cmd
+    os.system(cmd)
+    cmd = 'sshpass -p "ubuntu" scp ubuntu@' + ip + ':~/' + filename + ' ~/log/'
     print cmd
     os.system(cmd)
 
