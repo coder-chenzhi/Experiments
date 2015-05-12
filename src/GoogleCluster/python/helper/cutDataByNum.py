@@ -7,10 +7,11 @@ import csv
 import time
 import os
 
-INPUT_PATH = "/home/chenzhi/Documents/test/"
-OUTPUT_PATH = "/home/chenzhi/Documents/test/"
-INPUT_FILE_LIST = sorted([name for name in os.listdir(INPUT_PATH) if name.endswith('.csv')])
-NUM = 500000
+# INPUT_PATH = "/home/chenzhi/Documents/test/"
+OUTPUT_PATH = "/home/chenzhi/Documents/tmp/"
+# INPUT_FILE_LIST = sorted([name for name in os.listdir(INPUT_PATH) if name.endswith('.csv')])
+INPUT_FILE_LIST = ["/media/EEAEDA2FAED9EFD7/GoogleCluster/task_events_by_300_machines/0.csv"]
+NUM = 1000000
 
 def get_current_time():
     localtime = time.localtime()
@@ -20,10 +21,10 @@ def get_current_time():
 if __name__ == "__main__":
     start_time = time.time()
     print 'start at', get_current_time()
-    output_file = open(INPUT_PATH + "New10M.csv", "a")
+    output_file = open(OUTPUT_PATH + "1M.csv", "a")
     writer = csv.writer(output_file, delimiter=',', quoting=csv.QUOTE_NONE)
     for filename in INPUT_FILE_LIST:
-        input_file = open(INPUT_PATH + filename, "r")
+        input_file = open(filename, "r")
         reader = csv.reader(input_file, delimiter=',', quoting=csv.QUOTE_NONE)
         count = 0
         for row in reader:

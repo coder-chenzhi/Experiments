@@ -8,9 +8,10 @@ import time
 import MySQLdb
 import threading
 
-# INPUT_PATH = "/home/chenzhi/Documents/test/throughput/split_equally_1/"
+# INPUT_PATH = "/media/EEAEDA2FAED9EFD7/GoogleCluster/UsedData/throughput/split_equally_1/"
 # INPUT_FILE_LIST = sorted([INPUT_PATH + name for name in os.listdir(INPUT_PATH) if name.endswith('.csv')])
-INPUT_FILE_LIST = ["/media/EEAEDA2FAED9EFD7/GoogleCluster/task_events_one_day/1_1.csv"]
+# INPUT_FILE_LIST = ["/media/EEAEDA2FAED9EFD7/GoogleCluster/task_events_one_day/1_1.csv"]
+INPUT_FILE_LIST = ["/home/chenzhi/Documents/tmp/1000k.csv"]
 
 INSERT_TASK_EVENTS = '''insert into task_events values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
 INSERT_TASK_USAGE = '''insert into task_usage values (%s, %s, %s, %s, %s, %s, %s,
@@ -69,7 +70,7 @@ if __name__ == "__main__":
         db = MySQLdb.connect(host="localhost",  # your host, usually localhost
                           user="root",  # your username
                           passwd="123",  # your password
-                          db="GoogleCluster")  # name of the data base
+                          db="googlecluster")  # name of the data base
         open_file = open(fileName, 'r')
         t = threading.Thread(target=simulate, name=fileName, args=(db, open_file,))
         thread_pool.append(t)

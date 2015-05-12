@@ -8,7 +8,7 @@ count the total line number of csv files contained by certain folder
 
 import os
 
-INPUT_PATH = "/home/ubuntu/Documents/task_events_by_300_machines/"
+INPUT_PATH = "/home/chenzhi/Documents/tmp/"
 INPUT_FILES = os.listdir(INPUT_PATH)
 
 if __name__ == '__main__':
